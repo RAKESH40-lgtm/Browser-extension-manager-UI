@@ -88,7 +88,9 @@ button {
 .extention-listdetails {
   margin-left: 15px;
 }
-
+.action-buttons{
+  display: flex;
+}
 .extensionlistBtn {
   width: 65px;
   border-radius: 15px;
@@ -167,4 +169,10 @@ input:checked+.slider:before {
 }
 .attribution{
   text-align: center;
+}
+.themes-settings{
+  cursor: pointer;
+}
+.add-background{
+  background-color: hsl(3, 77%, 44%);
 }
