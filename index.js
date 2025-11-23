@@ -10,7 +10,7 @@ addEventListener("DOMContentLoaded", () => {
     }
 
     let jsoncontent = document.querySelector(".extension-content")
-
+    let themesType = "light-theme"
 
     let actionsBtns = document.querySelector(".action-buttons")
     let themesSetting = document.querySelector(".themes-settings")
@@ -33,7 +33,7 @@ addEventListener("DOMContentLoaded", () => {
         label.className = "switch"
         let input = document.createElement("input")
         input.setAttribute("type", "checkbox")
-        input.setAttribute("value", index)
+        input.setAttribute("value", data?.name)
         input.checked = data?.isActive
 
         let span = document.createElement("span")
@@ -73,78 +73,96 @@ addEventListener("DOMContentLoaded", () => {
     }
     let jsonData = getItem()
     renderData(jsonData)
+    function cardthemes(themesType) {
+        if (themesType === "dark-theme") {
+            console.log(themesType)
+            let child = jsoncontent.children
+            Array.from(child).forEach((apply) => {
+                apply.style.backgroundColor = "white"
+                apply.style.color = "black"
+                apply.style.border = "1px solid black"
+            })
+        } else {
+            let child = jsoncontent.children
+            Array.from(child).forEach((apply) => {
+                apply.style.backgroundColor = "hsl(226, 11%, 37%)"
+                apply.style.color = "white"
+                apply.style.border = "none"
+            })
+        }
+    }
     actionsBtns.addEventListener("click", (e) => {
         let jsonData = getItem()
-        console.log(jsonData);
 
         if (e.target.tagName === "BUTTON") {
             jsoncontent.innerHTML = ""
+
             if (e.target.textContent === "All") {
                 e.target.style.backgroundColor = "hsl(3, 77%, 44%)"
-                console.log(actionsBtns.children)
                 Array.from(actionsBtns.children).forEach((item) => {
                     if (item !== e.target) {
-                        console.log(item)
                         item.style.backgroundColor = "white"
                     }
                 })
                 renderData(jsonData)
+                cardthemes(themesType)
             }
             if (e.target.textContent === "Active") {
-                console.log(jsonData)
                 e.target.style.backgroundColor = "hsl(3, 77%, 44%)"
                 Array.from(actionsBtns.children).forEach((item) => {
                     if (item !== e.target) {
-                        console.log(item)
                         item.style.backgroundColor = "white"
                     }
                 })
                 const filterActive = jsonData.filter((item) => item.isActive)
                 console.log("active", filterActive)
                 renderData(filterActive)
+                cardthemes(themesType)
             }
             if (e.target.textContent === "Inactive") {
                 e.target.style.backgroundColor = "hsl(3, 77%, 44%)"
                 Array.from(actionsBtns.children).forEach((item) => {
                     if (item !== e.target) {
-                        console.log(item)
                         item.style.backgroundColor = "white"
                     }
                 })
                 const filterInActive = jsonData.filter((item) => !item.isActive)
                 console.log("active", filterInActive)
                 renderData(filterInActive)
+                cardthemes(themesType)
             }
         }
     })
     jsoncontent.addEventListener("click", (e) => {
         let jsonData = getItem()
         if (e.target.tagName === "INPUT") {
-            console.log(e.target.value, jsonData)
-            const findbyindex = jsonData.find((item, index) => index == e.target.value)
-            console.log(findbyindex)
-            findbyindex.isActive = !findbyindex.isActive
-            jsonData.splice(e.target.value, 1, findbyindex)
+            const findbyindex = jsonData.findIndex((item, index) => item.name == e.target.value)
+            const finddata = jsonData.find((item, index) => item.name == e.target.value)
+            console.log(finddata)
+            finddata.isActive = !finddata.isActive
+            jsonData.splice(findbyindex, 1, finddata)
             localStorage.setItem("jsonData", JSON.stringify(jsonData))
-            console.log(jsonData)
-
+            console.log("Changed", jsonData)
+            cardthemes(themesType)
         }
         if (e.target.tagName === "BUTTON") {
-            console.log(jsonData, e.target.value)
             jsoncontent.innerHTML = ""
             const filterdata = jsonData.filter((item) => item.name !== e.target.value)
             renderData(filterdata)
+            cardthemes(themesType)
             localStorage.setItem("jsonData", JSON.stringify(filterdata))
         }
     })
     themesSetting.addEventListener("click", (e) => {
-        console.log(e.target.className)
+        themesType = e.target.className
         if (e.target.className === "dark-theme") {
             darktheme.style.display = "none"
             lighttheme.style.display = "block"
             body.style.backgroundColor = "white"
             header.style.backgroundColor = "white"
+            themesSetting.style.backgroundColor = "white"
             header.style.border = "1px solid black"
+            themesSetting.style.border = "1px solid black"
             body.style.color = "black"
             let child = jsoncontent.children
             Array.from(child).forEach((apply) => {
@@ -156,6 +174,7 @@ addEventListener("DOMContentLoaded", () => {
         }
         if (e.target.className === "light-theme") {
             body.style.backgroundColor = "hsl(227, 75%, 14%)"
+            themesSetting.style.backgroundColor = "hsl(227, 11%, 37%)"
             header.style.backgroundColor = "hsl(227, 11%, 56%)"
             header.style.border = "none"
             body.style.color = "white"
@@ -164,7 +183,7 @@ addEventListener("DOMContentLoaded", () => {
             let child = jsoncontent.children
             Array.from(child).forEach((apply) => {
                 apply.style.backgroundColor = "hsl(226, 11%, 37%)"
-                apply.style.color = "black"
+                apply.style.color = "white"
                 apply.style.border = "none"
             })
         }

@@ -5,19 +5,22 @@
 }
 
 body {
-  width: 100%;
-  height: 100%;
+  width: 100dvw;
+  height: 100dvh;
   background-color: hsl(227, 75%, 14%);
   color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
 }
 
 .header {
 
   background-color: hsl(227, 11%, 56%);
-  width: 70dvw;
+  width: calc(100dvw - 30dvw);
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin: 2rem 13rem;
   border-radius: 18px;
   padding: 0.5em;
@@ -27,6 +30,7 @@ body {
   padding: 7px;
   border-radius: 10px;
   background-color: hsl(227, 11%, 37%);
+  cursor: pointer;
 }
 
 .light-theme {
@@ -35,14 +39,12 @@ body {
 
 
 .extension-body {
-  margin: 2rem 13rem;
-  width: 70dvw;
-
+  width: calc(100dvw - 30dvw);
 }
 
 .extension-menus {
   display: grid;
-  grid-template-columns:12fr 3fr ;
+  grid-template-columns: 12fr 3fr;
   align-content: center;
   margin-bottom: 20px;
 }
@@ -88,9 +90,11 @@ button {
 .extention-listdetails {
   margin-left: 15px;
 }
-.action-buttons{
+
+.action-buttons {
   display: flex;
 }
+
 .extensionlistBtn {
   width: 65px;
   border-radius: 15px;
@@ -121,7 +125,7 @@ button {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: hsl(226, 11%, 37%);
+  background-color: hsl(226, 11%, 55%);
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -136,6 +140,7 @@ button {
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
+
 }
 
 input:checked+.slider {
@@ -167,12 +172,152 @@ input:checked+.slider:before {
   position: relative;
   top: 30%;
 }
-.attribution{
-  text-align: center;
-}
-.themes-settings{
-  cursor: pointer;
-}
-.add-background{
+
+.add-background {
   background-color: hsl(3, 77%, 44%);
+}
+
+button:focus {
+  background-color: hsl(3, 71%, 56%);
+}
+
+button:hover {
+  background-color: hsl(3, 71%, 56%);
+}
+
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  .body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .extension-body {
+    width: calc(100dvw - 4dvw);
+  }
+
+  p {
+    width: calc(70dvw - 40dvw);
+
+  }
+
+  .header {
+
+    background-color: hsl(227, 11%, 56%);
+    width: calc(100dvw - 4dvw);
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 13rem;
+    border-radius: 18px;
+    padding: 0.5em;
+  }
+
+  .extension-content {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    column-gap: 0.5%;
+    row-gap: 1%;
+
+  }
+
+  .extensions-lists {
+    width: calc(70dvw - 24dvw);
+    height: 185px;
+    background-color: hsl(226, 11%, 37%);
+    border-radius: 15px;
+    padding: 12px;
+    color: white;
+
+  }
+
+  .extension-footer {
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+    position: relative;
+    top: 30%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width :1000px) {
+  .body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .extension-content {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    column-gap: 0.5%;
+    row-gap: 1%;
+
+  }
+
+  .extensions-lists {
+    width: calc(70dvw - 35dvw);
+    ;
+    height: 185px;
+    background-color: hsl(226, 11%, 37%);
+    border-radius: 15px;
+    padding: 12px;
+    color: white;
+
+  }
+}
+
+@media screen and (min-width: 1000px) and (max-width : 1060px) {
+  .body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .extension-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 0.5%;
+    row-gap: 1%;
+
+  }
+
+  .extensions-lists {
+    width: calc(70dvw - 35dvw);
+    height: 185px;
+    background-color: hsl(226, 11%, 37%);
+    border-radius: 15px;
+    padding: 12px;
+    color: white;
+
+  }
+}
+
+@media screen and (min-width: 1060px) {
+  .body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .extension-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 0.5%;
+    row-gap: 1%;
+
+  }
+
+  .extensions-lists {
+    width: calc(70dvw - 47dvw);
+    height: 185px;
+    background-color: hsl(226, 11%, 37%);
+    border-radius: 15px;
+    padding: 12px;
+    color: white;
+
+  }
+
+  p {
+    font-size: 14px;
+  }
 }
