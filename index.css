@@ -7,6 +7,7 @@
 body {
   width: 100dvw;
   height: 100dvh;
+  font-weight: 500;
   background-color: hsl(227, 75%, 14%);
   color: white;
   display: flex;
@@ -186,6 +187,51 @@ button:hover {
 }
 
 
+@media screen and (max-width: 480px) {
+  .body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .extension-body {
+    width: calc(100dvw - 4dvw);
+  }
+  .header {
+
+    background-color: hsl(227, 11%, 56%);
+    width: calc(100dvw - 4dvw);
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 13rem;
+    border-radius: 18px;
+    padding: 0.5em;
+  }
+
+  .extension-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 0.5%;
+    row-gap: 1%;
+
+  }
+
+  .extensions-lists {
+    width: calc(70dvw + 24dvw);;
+    height: 185px;
+    background-color: hsl(226, 11%, 37%);
+    border-radius: 15px;
+    padding: 12px;
+    color: white;
+
+  }
+
+  .extension-footer {
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+    position: relative;
+    top: 30%;
+  }
+}
 @media screen and (min-width: 480px) and (max-width: 767px) {
   .body {
     display: flex;
@@ -314,6 +360,7 @@ button:hover {
     border-radius: 15px;
     padding: 12px;
     color: white;
+    font-weight: 700;
 
   }
 
