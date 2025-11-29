@@ -28,7 +28,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://browser-extension-manager-ui-psi-five.vercel.app/)
+- Live Site URL: [Live url](https://browser-extension-manager-ui-psi-five.vercel.app/)
 
 ## My process
 
