@@ -49,4 +49,4 @@ Used dynamic DOM manipulation with JSON, added event listeners to the buttons, a
 
 ## Author
 
-- Frontend Mentor - [Rakesh v] (https://www.frontendmentor.io/profile/RAKESH40-lgtm)
+- Frontend Mentor - (https://www.frontendmentor.io/profile/RAKESH40-lgtm)
